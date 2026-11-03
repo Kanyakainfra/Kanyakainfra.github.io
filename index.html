@@ -205,11 +205,6 @@ details.spec .spec-src{margin:0 0 12px;font-size:.78rem;color:#68707a}
 .saptara-card-fallback .mini-floors b{font-family:var(--serif);font-weight:500;font-size:.86rem;color:var(--gold-light);min-width:86px}
 .project-media.remote-ok .saptara-card-fallback{display:none}
 .project-media .shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,17,31,.55),transparent 45%)}
-/* Image slots reserved for photographs still to come (FCI Residential) */
-.slot-card{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:30px 32px;background:radial-gradient(ellipse at 72% 28%,rgba(203,170,104,.16),transparent 60%),linear-gradient(160deg,#13253b,#07111f 70%)}
-.slot-card b{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.05;color:var(--gold-light)}
-.slot-card span{margin-top:10px;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(232,214,172,.7)}
-.thumbs .slot{aspect-ratio:3/2;background:linear-gradient(160deg,#13253b,#0a1626);box-shadow:inset 0 0 0 1px rgba(232,214,172,.14)}
 
 /* Track record */
 .record-layout{display:grid;grid-template-columns:1.55fr .45fr;gap:clamp(30px,5vw,70px);align-items:start}
@@ -303,6 +298,17 @@ details.spec .spec-src{margin:0 0 12px;font-size:.78rem;color:#68707a}
 .image-credit{font-size:.75rem;color:var(--muted);margin:16px 0 0}
 .dark .image-credit{color:rgba(255,255,255,.5)}
 .remote-gallery[hidden]{display:none}
+/* The Saptara full gallery (renders from the project presentation) */
+.sx-gallery .sub-kicker:first-child{margin-top:70px}
+.sx-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.sx-grid figure{margin:0}
+.sx-grid button{display:block;width:100%;padding:0;border:0;border-radius:8px;overflow:hidden;aspect-ratio:16/10;background:#0d1b2d;cursor:zoom-in;box-shadow:0 1px 2px rgba(7,17,31,.08),0 8px 20px rgba(7,17,31,.08)}
+.sx-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.sx-grid img.contain{object-fit:contain;background:#fff}
+.sx-grid button:hover img{transform:scale(1.04)}
+.sx-grid figcaption{padding:9px 2px 0;font-size:.82rem;line-height:1.35;color:#4f5862}
+@media(max-width:960px){.sx-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){.sx-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.sx-gallery .sub-kicker:first-child{margin-top:45px}}
 #saptara{counter-reset:sk}
 #saptara .section{counter-increment:sk}
 #saptara .kn::before{content:counter(sk,decimal-leading-zero)}
@@ -368,6 +374,19 @@ footer p{margin:0 0 6px}
 footer nav{display:flex;flex-direction:column;gap:7px}
 footer nav a:hover{color:var(--gold-light)}
 .footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:22px;color:rgba(255,255,255,.42);font-size:.72rem}
+.footer-bottom span a{color:rgba(255,255,255,.72);border-bottom:1px solid rgba(255,255,255,.3);white-space:nowrap}
+.footer-bottom span a:hover{color:var(--gold-light)}
+
+/* Terms of use */
+.section.terms-head{padding-top:clamp(140px,14vw,190px);padding-bottom:clamp(50px,6vw,80px)}
+.terms-meta{margin:22px 0 0;color:rgba(255,255,255,.65);font-size:.95rem}
+.terms-body{max-width:760px}
+.terms-body h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.25;margin:34px 0 8px}
+.terms-body h3:first-child{margin-top:0}
+.terms-body p,.terms-body li{color:#3d4650}
+.terms-body ul{margin:8px 0 0;padding-left:20px}
+.terms-body a{border-bottom:1px solid var(--gold)}
+.terms-body .terms-note{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}
 
 /* Lightbox */
 .lightbox{max-width:min(96vw,1200px);width:auto;max-height:94svh;padding:16px;background:var(--ink);color:#fff;border:1px solid var(--gold);overflow:auto}
@@ -376,6 +395,10 @@ footer nav a:hover{color:var(--gold-light)}
 .lightbox-bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:4px 4px 14px}
 .lightbox-bar p{margin:0;font-size:.85rem;color:var(--gold-light)}
 .lightbox-close{padding:9px 18px;background:var(--gold);color:var(--ink);border:0;cursor:pointer;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.lightbox-bar{flex-wrap:wrap}
+.lightbox-actions{display:flex;gap:8px;flex-shrink:0}
+.lightbox-prev,.lightbox-next{padding:9px 14px;background:transparent;color:var(--gold-light);border:1px solid rgba(232,214,172,.45);cursor:pointer;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.lightbox-prev:hover,.lightbox-next:hover{border-color:var(--gold)}
 
 /* Mobile contact bar */
 .mobile-contact{display:none}
@@ -620,7 +643,7 @@ footer{padding:45px 22px 30px}
     <div class="project-grid">
 
       <article class="project wide reveal" id="c-saptara-card">
-        <div class="project-media" data-remote-bg="facade-day.jpg" role="img" aria-label="The Saptara, Tirupati: building facade at sunrise, architectural visualisation">
+        <div class="project-media" data-remote-bg="renders/p04-facade-sunrise.jpg" role="img" aria-label="The Saptara, Tirupati: building facade at sunrise, architectural visualisation">
           <div class="saptara-card-fallback" aria-hidden="true">
             <div class="mini-floors"><span><b>Rooftop</b></span><span><b>Floors 5–6</b></span><span><b>Floors 3–4</b></span><span><b>Floor 2 + M</b></span><span><b>Ground + 1</b></span><span><b>Basement</b></span></div>
             <div class="word">The<br>Saptara</div>
@@ -645,13 +668,15 @@ footer{padding:45px 22px 30px}
       </article>
 
       <article class="project reveal" id="c-fci">
-        <!-- Image slots: one lead photograph and four gallery photographs, to be placed in images/fci/ -->
         <div class="project-media" style="min-height:280px">
-          <div class="slot-card" aria-hidden="true"><b>FCI Residential</b><span>Photographs to follow</span></div>
+          <img src="images/fci/fci-exterior-day.webp" alt="FCI Residential, Gajularamaram: exterior by day, architectural visualisation" loading="lazy" decoding="async">
           <span class="status tag">Under construction</span>
         </div>
-        <div class="thumbs" aria-hidden="true">
-          <div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="slot"></div>
+        <div class="thumbs" aria-label="FCI Residential renders">
+          <button type="button" data-lightbox data-caption="FCI Residential, exterior at night · architectural visualisation"><img src="images/fci/fci-exterior-night.webp" alt="FCI Residential exterior at night, architectural visualisation" loading="lazy" decoding="async"></button>
+          <button type="button" data-lightbox data-caption="FCI Residential, lounge and reception · architectural visualisation"><img src="images/fci/fci-lounge-reception.webp" alt="FCI Residential lounge and reception, architectural visualisation" loading="lazy" decoding="async"></button>
+          <button type="button" data-lightbox data-caption="FCI Residential, yoga studio · architectural visualisation"><img src="images/fci/fci-yoga-studio.webp" alt="FCI Residential yoga studio and corridor, architectural visualisation" loading="lazy" decoding="async"></button>
+          <button type="button" data-lightbox data-caption="FCI Residential, swimming pool at night · architectural visualisation"><img src="images/fci/fci-pool-night.webp" alt="FCI Residential swimming pool at night, architectural visualisation" loading="lazy" decoding="async"></button>
         </div>
         <div class="project-body">
           <h3 style="margin-top:4px">FCI Residential</h3>
@@ -798,7 +823,7 @@ footer{padding:45px 22px 30px}
 <div class="tab-panel" id="saptara" data-tab="saptara" role="region" aria-label="The Saptara">
 
   <section class="hero" aria-labelledby="s-title">
-    <div class="hero-media saptara-fallback" data-remote-bg="facade-night.jpg" role="img" aria-label="The Saptara, Tirupati, architectural visualisation">
+    <div class="hero-media saptara-fallback" data-remote-bg="renders/p06-facade-night.jpg" role="img" aria-label="The Saptara, Tirupati, architectural visualisation">
       <div class="floors" aria-hidden="true">
         <span><b>Rooftop</b>Pool · spa · cottages</span>
         <span><b>Floors 5–6</b>Hotel rooms · 3-star</span>
@@ -814,7 +839,7 @@ footer{padding:45px 22px 30px}
       <h1 id="s-title">The Saptara. <em>Seven experiences in one.</em></h1>
       <p class="hero-copy">Our flagship project: an integrated multiplex, commercial and hospitality destination opposite Tirupati Railway Station, developed in partnership with Tirupati Smart City Corporation Limited.</p>
       <div class="hero-actions" style="margin-top:32px">
-        <a class="button button-gold" href="https://the-saptara-tirupati.p-c-k.chatgpt.site" target="_blank" rel="noopener">Visit The Saptara website <span aria-hidden="true">↗</span></a>
+        <a class="button button-gold" href="#s-renders">View the gallery <span aria-hidden="true">↓</span></a>
         <a class="button button-quiet" href="#s-project">Project facts <span aria-hidden="true">↓</span></a>
       </div>
     </div>
@@ -837,6 +862,11 @@ footer{padding:45px 22px 30px}
           <span>Concession authority</span>
           <strong>Tirupati Smart City Corporation Limited</strong>
           <small>PPP · DBFOT · 33 years including 2 years of construction</small>
+        </div>
+        <div class="partnership">
+          <span>The name</span>
+          <strong>Sapta + Tara: seven + star</strong>
+          <small>For the Seven Hills and seven-star experiences: shop, dine, work, stay, relax, celebrate and live. Guests are our stars.</small>
         </div>
       </div>
     </div>
@@ -867,11 +897,11 @@ footer{padding:45px 22px 30px}
       <p>Concept renderings of The Saptara. Layouts and finishes are indicative.</p>
     </div>
     <div class="mosaic">
-      <figure class="mosaic-wide"><div class="bg" data-remote-bg="central-atrium.jpg"></div><figcaption><b>Retail &amp; central atrium</b><span>A multi-level heart for discovery.</span></figcaption></figure>
-      <figure><div class="bg" data-remote-bg="food-court.jpg"></div><figcaption><b>Food court &amp; dining</b><span>Everyday choice, considered atmosphere.</span></figcaption></figure>
-      <figure><div class="bg" data-remote-bg="game-zone.jpg"></div><figcaption><b>Entertainment</b><span>Multiplex theatres and a gaming zone.</span></figcaption></figure>
-      <figure><div class="bg" data-remote-bg="luxury-suite.jpg"></div><figcaption><b>Hospitality</b><span>Economy and 3-star hotel rooms.</span></figcaption></figure>
-      <figure><div class="bg" data-remote-bg="rooftop-pool.jpg"></div><figcaption><b>Rooftop leisure</b><span>Pool, spa and cottages.</span></figcaption></figure>
+      <figure class="mosaic-wide"><div class="bg" data-remote-bg="renders/p17-atrium.jpg"></div><figcaption><b>Retail &amp; central atrium</b><span>A multi-level heart for discovery.</span></figcaption></figure>
+      <figure><div class="bg" data-remote-bg="renders/p23-food-court.jpg"></div><figcaption><b>Food court &amp; dining</b><span>Everyday choice, considered atmosphere.</span></figcaption></figure>
+      <figure><div class="bg" data-remote-bg="renders/p31-game-zone-arcade.jpg"></div><figcaption><b>Entertainment</b><span>Multiplex theatres and a gaming zone.</span></figcaption></figure>
+      <figure><div class="bg" data-remote-bg="renders/p42-hotel-suite-bedroom.jpg"></div><figcaption><b>Hospitality</b><span>Economy and 3-star hotel rooms.</span></figcaption></figure>
+      <figure><div class="bg" data-remote-bg="renders/p47-pool-sunset.jpg"></div><figcaption><b>Rooftop leisure</b><span>Pool, spa and cottages.</span></figcaption></figure>
     </div>
     <p class="image-credit">Concept renderings, indicative only.</p>
   </section>
@@ -900,7 +930,7 @@ footer{padding:45px 22px 30px}
       <div class="plan-copy reveal">
         <h2>A vertical destination, <em>layered by use.</em></h2>
         <p>The programme moves from parking and high-traffic commercial floors to entertainment, two tiers of hotel rooms and rooftop leisure.</p>
-        <a class="text-link" href="https://the-saptara-tirupati.p-c-k.chatgpt.site" target="_blank" rel="noopener">See rendered floor plans <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="#s-renders">See every space in the gallery <span aria-hidden="true">↓</span></a>
       </div>
       <ol class="floor-stack reveal" aria-label="Floor programme, top to bottom">
         <li><b>Rooftop</b><span>Swimming pool with spa and cottages</span><i>Leisure</i></li>
@@ -913,15 +943,96 @@ footer{padding:45px 22px 30px}
     </div>
   </section>
 
+  <section class="section on-paper" id="s-renders">
+    <p class="section-kicker"><span class="kn"></span> / The gallery</p>
+    <div class="head-grid">
+      <h2 class="reveal">Every space, <em>street to rooftop.</em></h2>
+      <p class="reveal">53 concept renderings from The Saptara presentation, grouped by use. Select an image to view it larger and step through the set. Layouts and finishes are indicative.</p>
+    </div>
+    <div class="sx-gallery" data-gallery>
+      <p class="sub-kicker">The building</p>
+      <div class="sx-grid">
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p02-floor-by-floor.jpg" data-caption="The Saptara · The building · Exploded view, floor by floor"><img class="contain" src="images/saptara/thumbs/p02-floor-by-floor.webp" alt="The Saptara, the building: exploded view, floor by floor, architectural visualisation" width="720" height="770" loading="lazy" decoding="async"></button><figcaption>Exploded view, floor by floor</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p04-facade-sunrise.jpg" data-caption="The Saptara · The building · Facade at sunrise"><img src="images/saptara/thumbs/p04-facade-sunrise.webp" alt="The Saptara, the building: facade at sunrise, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Facade at sunrise</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p05-front-elevation.jpg" data-caption="The Saptara · The building · Front elevation"><img src="images/saptara/thumbs/p05-front-elevation.webp" alt="The Saptara, the building: front elevation, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Front elevation</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p06-facade-night.jpg" data-caption="The Saptara · The building · Facade at night"><img src="images/saptara/thumbs/p06-facade-night.webp" alt="The Saptara, the building: facade at night, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Facade at night</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p07-street-view.jpg" data-caption="The Saptara · The building · Street view"><img src="images/saptara/thumbs/p07-street-view.webp" alt="The Saptara, the building: street view, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Street view</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p56-aerial-view.jpg" data-caption="The Saptara · The building · Aerial view"><img src="images/saptara/thumbs/p56-aerial-view.webp" alt="The Saptara, the building: aerial view, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Aerial view</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p08-main-entry.jpg" data-caption="The Saptara · The building · Main entry"><img src="images/saptara/thumbs/p08-main-entry.webp" alt="The Saptara, the building: main entry, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Main entry</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p10-entry-food-kiosks.jpg" data-caption="The Saptara · The building · Main entry and outdoor food kiosks"><img src="images/saptara/thumbs/p10-entry-food-kiosks.webp" alt="The Saptara, the building: main entry and outdoor food kiosks, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Main entry and outdoor food kiosks</figcaption></figure>
+      </div>
+      <p class="sub-kicker">Retail and atrium</p>
+      <div class="sx-grid">
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p11-entry-double-height.jpg" data-caption="The Saptara · Retail and atrium · Double-height entry"><img src="images/saptara/thumbs/p11-entry-double-height.webp" alt="The Saptara, retail and atrium: double-height entry, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Double-height entry</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p12-entry-escalators.jpg" data-caption="The Saptara · Retail and atrium · Entry with escalator access"><img src="images/saptara/thumbs/p12-entry-escalators.webp" alt="The Saptara, retail and atrium: entry with escalator access, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Entry with escalator access</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p13-lifestyle-store.jpg" data-caption="The Saptara · Retail and atrium · Lifestyle store"><img src="images/saptara/thumbs/p13-lifestyle-store.webp" alt="The Saptara, retail and atrium: lifestyle store, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Lifestyle store</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p14-lift-lobby.jpg" data-caption="The Saptara · Retail and atrium · Lift lobby"><img src="images/saptara/thumbs/p14-lift-lobby.webp" alt="The Saptara, retail and atrium: lift lobby, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Lift lobby</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p15-clothing-store.jpg" data-caption="The Saptara · Retail and atrium · Clothing store"><img src="images/saptara/thumbs/p15-clothing-store.webp" alt="The Saptara, retail and atrium: clothing store, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Clothing store</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p16-all-day-store.jpg" data-caption="The Saptara · Retail and atrium · All-day store"><img src="images/saptara/thumbs/p16-all-day-store.webp" alt="The Saptara, retail and atrium: all-day store, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>All-day store</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p17-atrium.jpg" data-caption="The Saptara · Retail and atrium · Double-height atrium"><img src="images/saptara/thumbs/p17-atrium.webp" alt="The Saptara, retail and atrium: double-height atrium, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Double-height atrium</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p18-atrium-first-floor.jpg" data-caption="The Saptara · Retail and atrium · Atrium, first-floor view"><img src="images/saptara/thumbs/p18-atrium-first-floor.webp" alt="The Saptara, retail and atrium: atrium, first-floor view, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Atrium, first-floor view</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p19-garment-store.jpg" data-caption="The Saptara · Retail and atrium · Garment store"><img src="images/saptara/thumbs/p19-garment-store.webp" alt="The Saptara, retail and atrium: garment store, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Garment store</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p20-luggage-store.jpg" data-caption="The Saptara · Retail and atrium · Luggage store"><img src="images/saptara/thumbs/p20-luggage-store.webp" alt="The Saptara, retail and atrium: luggage store, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Luggage store</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p21-home-decor-store.jpg" data-caption="The Saptara · Retail and atrium · Home décor store"><img src="images/saptara/thumbs/p21-home-decor-store.webp" alt="The Saptara, retail and atrium: home décor store, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Home décor store</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p22-atrium-from-above.jpg" data-caption="The Saptara · Retail and atrium · Atrium from above"><img src="images/saptara/thumbs/p22-atrium-from-above.webp" alt="The Saptara, retail and atrium: atrium from above, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Atrium from above</figcaption></figure>
+      </div>
+      <p class="sub-kicker">Food court and entertainment</p>
+      <div class="sx-grid">
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p23-food-court.jpg" data-caption="The Saptara · Food court and entertainment · Food court"><img src="images/saptara/thumbs/p23-food-court.webp" alt="The Saptara, food court and entertainment: food court, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Food court</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p24-food-court-seating.jpg" data-caption="The Saptara · Food court and entertainment · Food court seating"><img src="images/saptara/thumbs/p24-food-court-seating.webp" alt="The Saptara, food court and entertainment: food court seating, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Food court seating</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p25-theatre-128.jpg" data-caption="The Saptara · Food court and entertainment · Theatre, 128 seats"><img src="images/saptara/thumbs/p25-theatre-128.webp" alt="The Saptara, food court and entertainment: theatre, 128 seats, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Theatre, 128 seats</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p26-theatre-128-seating.jpg" data-caption="The Saptara · Food court and entertainment · Theatre seating, 128 seats"><img src="images/saptara/thumbs/p26-theatre-128-seating.webp" alt="The Saptara, food court and entertainment: theatre seating, 128 seats, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Theatre seating, 128 seats</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p27-theatre-172.jpg" data-caption="The Saptara · Food court and entertainment · Theatre, 172 seats"><img src="images/saptara/thumbs/p27-theatre-172.webp" alt="The Saptara, food court and entertainment: theatre, 172 seats, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Theatre, 172 seats</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p28-theatre-restrooms.jpg" data-caption="The Saptara · Food court and entertainment · Theatre restrooms"><img src="images/saptara/thumbs/p28-theatre-restrooms.webp" alt="The Saptara, food court and entertainment: theatre restrooms, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Theatre restrooms</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p29-theatre-floor-restrooms.jpg" data-caption="The Saptara · Food court and entertainment · Theatre-floor restrooms"><img src="images/saptara/thumbs/p29-theatre-floor-restrooms.webp" alt="The Saptara, food court and entertainment: theatre-floor restrooms, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Theatre-floor restrooms</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p30-game-zone.jpg" data-caption="The Saptara · Food court and entertainment · Game zone"><img src="images/saptara/thumbs/p30-game-zone.webp" alt="The Saptara, food court and entertainment: game zone, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Game zone</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p31-game-zone-arcade.jpg" data-caption="The Saptara · Food court and entertainment · Game zone arcade"><img src="images/saptara/thumbs/p31-game-zone-arcade.webp" alt="The Saptara, food court and entertainment: game zone arcade, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Game zone arcade</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p32-restro-bar.jpg" data-caption="The Saptara · Food court and entertainment · Restro-bar"><img src="images/saptara/thumbs/p32-restro-bar.webp" alt="The Saptara, food court and entertainment: restro-bar, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Restro-bar</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p33-restro-bar-lounge.jpg" data-caption="The Saptara · Food court and entertainment · Restro-bar lounge"><img src="images/saptara/thumbs/p33-restro-bar-lounge.webp" alt="The Saptara, food court and entertainment: restro-bar lounge, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Restro-bar lounge</figcaption></figure>
+      </div>
+      <p class="sub-kicker">Economy hotel</p>
+      <div class="sx-grid">
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p34-economy-hotel-atrium.jpg" data-caption="The Saptara · Economy hotel · Double-height atrium"><img src="images/saptara/thumbs/p34-economy-hotel-atrium.webp" alt="The Saptara, economy hotel: double-height atrium, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Double-height atrium</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p35-economy-hotel-atrium-upper.jpg" data-caption="The Saptara · Economy hotel · Atrium, upper level"><img src="images/saptara/thumbs/p35-economy-hotel-atrium-upper.webp" alt="The Saptara, economy hotel: atrium, upper level, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Atrium, upper level</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p36-economy-hotel-corridor.jpg" data-caption="The Saptara · Economy hotel · Corridor"><img src="images/saptara/thumbs/p36-economy-hotel-corridor.webp" alt="The Saptara, economy hotel: corridor, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Corridor</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p37-economy-hotel-room.jpg" data-caption="The Saptara · Economy hotel · Room"><img src="images/saptara/thumbs/p37-economy-hotel-room.webp" alt="The Saptara, economy hotel: room, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Room</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p38-economy-hotel-washroom.jpg" data-caption="The Saptara · Economy hotel · Washroom"><img src="images/saptara/thumbs/p38-economy-hotel-washroom.webp" alt="The Saptara, economy hotel: washroom, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Washroom</figcaption></figure>
+      </div>
+      <p class="sub-kicker">3-star hotel</p>
+      <div class="sx-grid">
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p39-hotel-atrium.jpg" data-caption="The Saptara · 3-star hotel · Double-height atrium"><img src="images/saptara/thumbs/p39-hotel-atrium.webp" alt="The Saptara, 3-star hotel: double-height atrium, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Double-height atrium</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p40-hotel-suite.jpg" data-caption="The Saptara · 3-star hotel · Suite"><img src="images/saptara/thumbs/p40-hotel-suite.webp" alt="The Saptara, 3-star hotel: suite, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Suite</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p41-hotel-washroom.jpg" data-caption="The Saptara · 3-star hotel · Washroom"><img src="images/saptara/thumbs/p41-hotel-washroom.webp" alt="The Saptara, 3-star hotel: washroom, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Washroom</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p42-hotel-suite-bedroom.jpg" data-caption="The Saptara · 3-star hotel · Suite bedroom"><img src="images/saptara/thumbs/p42-hotel-suite-bedroom.webp" alt="The Saptara, 3-star hotel: suite bedroom, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Suite bedroom</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p43-hotel-atrium-dining.jpg" data-caption="The Saptara · 3-star hotel · Atrium dining"><img src="images/saptara/thumbs/p43-hotel-atrium-dining.webp" alt="The Saptara, 3-star hotel: atrium dining, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Atrium dining</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p44-hotel-corridor.jpg" data-caption="The Saptara · 3-star hotel · Corridor"><img src="images/saptara/thumbs/p44-hotel-corridor.webp" alt="The Saptara, 3-star hotel: corridor, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Corridor</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p45-hotel-atrium-open-sky.jpg" data-caption="The Saptara · 3-star hotel · Atrium open to the sky"><img src="images/saptara/thumbs/p45-hotel-atrium-open-sky.webp" alt="The Saptara, 3-star hotel: atrium open to the sky, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Atrium open to the sky</figcaption></figure>
+      </div>
+      <p class="sub-kicker">Rooftop</p>
+      <div class="sx-grid">
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p46-pool.jpg" data-caption="The Saptara · Rooftop · Pool"><img src="images/saptara/thumbs/p46-pool.webp" alt="The Saptara, rooftop: pool, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Pool</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p47-pool-sunset.jpg" data-caption="The Saptara · Rooftop · Pool at sunset"><img src="images/saptara/thumbs/p47-pool-sunset.webp" alt="The Saptara, rooftop: pool at sunset, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Pool at sunset</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p48-pool-restro-bar.jpg" data-caption="The Saptara · Rooftop · Pool-side restro-bar"><img src="images/saptara/thumbs/p48-pool-restro-bar.webp" alt="The Saptara, rooftop: pool-side restro-bar, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Pool-side restro-bar</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p49-spa.jpg" data-caption="The Saptara · Rooftop · Spa and wellness centre"><img src="images/saptara/thumbs/p49-spa.webp" alt="The Saptara, rooftop: spa and wellness centre, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Spa and wellness centre</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p50-sky-lounge.jpg" data-caption="The Saptara · Rooftop · Sky lounge"><img src="images/saptara/thumbs/p50-sky-lounge.webp" alt="The Saptara, rooftop: sky lounge, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Sky lounge</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p51-sky-lounge-dining.jpg" data-caption="The Saptara · Rooftop · Sky lounge dining"><img src="images/saptara/thumbs/p51-sky-lounge-dining.webp" alt="The Saptara, rooftop: sky lounge dining, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Sky lounge dining</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p52-penthouse-corridor.jpg" data-caption="The Saptara · Rooftop · Penthouse corridor"><img src="images/saptara/thumbs/p52-penthouse-corridor.webp" alt="The Saptara, rooftop: penthouse corridor, architectural visualisation" width="720" height="540" loading="lazy" decoding="async"></button><figcaption>Penthouse corridor</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p53-penthouse-living.jpg" data-caption="The Saptara · Rooftop · Penthouse living area"><img src="images/saptara/thumbs/p53-penthouse-living.webp" alt="The Saptara, rooftop: penthouse living area, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Penthouse living area</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p54-penthouse-balcony.jpg" data-caption="The Saptara · Rooftop · Penthouse balcony"><img src="images/saptara/thumbs/p54-penthouse-balcony.webp" alt="The Saptara, rooftop: penthouse balcony, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Penthouse balcony</figcaption></figure>
+        <figure><button type="button" data-lightbox data-full="images/saptara/renders/p55-penthouse-bedroom.jpg" data-caption="The Saptara · Rooftop · Penthouse bedroom"><img src="images/saptara/thumbs/p55-penthouse-bedroom.webp" alt="The Saptara, rooftop: penthouse bedroom, architectural visualisation" width="720" height="405" loading="lazy" decoding="async"></button><figcaption>Penthouse bedroom</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-band" aria-labelledby="s-cta">
     <div>
-      <p class="eyebrow">The full project story</p>
-      <h2 id="s-cta">Plans, renders and the Saptara story <em style="color:var(--gold-light)">live on its own website.</em></h2>
-      <p>Explore the rendered floor plans, the spaces on each level and the meaning behind the name.</p>
+      <p class="eyebrow">Enquiries</p>
+      <h2 id="s-cta">Interested in The Saptara? <em style="color:var(--gold-light)">Speak with our team.</em></h2>
+      <p>For project details and enquiries about The Saptara, call or message us during office hours.</p>
     </div>
     <div class="contact-actions">
-      <a class="button button-gold" href="https://the-saptara-tirupati.p-c-k.chatgpt.site" target="_blank" rel="noopener">Visit The Saptara website <span aria-hidden="true">↗</span></a>
-      <a class="button button-quiet" href="#contact">Speak with our team</a>
+      <a class="button button-gold" href="#contact">Speak with our team</a>
+      <a class="button button-quiet" href="tel:+919866333134">Call +91 98663 33134</a>
     </div>
   </section>
 </div>
@@ -1061,6 +1172,41 @@ footer{padding:45px 22px 30px}
 </div>
 
 <!-- =====================================================================
+     TERMS OF USE (reached from the footer; not in the main navigation)
+     ===================================================================== -->
+<div class="tab-panel" id="terms" data-tab="terms" role="region" aria-label="Terms of use">
+  <section class="section dark terms-head">
+    <p class="section-kicker">Legal</p>
+    <h2>Terms of use</h2>
+    <p class="terms-meta">© 2026 Kanyaka Infra Private Limited. All rights reserved.</p>
+  </section>
+  <section class="section on-paper">
+    <div class="terms-body">
+      <h3>Ownership</h3>
+      <p>This website and its content, including its text, design, code, logo, photographs, architectural renderings and other images, are owned by or licensed to Kanyaka Infra Private Limited (CIN U74102AP2023PTC112189), unless stated otherwise below.</p>
+      <h3>What you may do</h3>
+      <p>You may view this website in a web browser and link to it.</p>
+      <h3>What you may not do</h3>
+      <p>No licence is granted. You may not copy, reproduce, modify, adapt, publish, distribute, sublicense, sell or otherwise use any part of this website without the prior written permission of Kanyaka Infra Private Limited. Unauthorised use may infringe the Copyright Act, 1957 (India) and other applicable laws.</p>
+      <h3>Names and logos</h3>
+      <p>“Kanyaka Infra”, “The Saptara” and the Kanyaka Infra logo identify Kanyaka Infra Private Limited and its projects. They may not be used without prior written permission.</p>
+      <h3>Third-party material</h3>
+      <p>The following are not owned by Kanyaka Infra Private Limited, are not covered by these terms and remain the property of their respective owners:</p>
+      <ul>
+        <li>newspaper cuttings (Eenadu), reproduced for reference;</li>
+        <li>Silk Plaster names, marks and product images;</li>
+        <li>the Playfair Display and Manrope typefaces, used under the SIL Open Font License, Version 1.1.</li>
+      </ul>
+      <h3>Project information</h3>
+      <p>Renders are architectural visualisations and indicative only; areas and figures are approximate.</p>
+      <h3>Permission requests</h3>
+      <p>Kanyaka Infra Private Limited, Flat No. 103, A-Block, Vasavi Enclaves, Near Venkateshwara Swamy Temple, Settipally, Renigunta Road, Tirupati – 517501, Andhra Pradesh, India<br><a href="mailto:directorkanyakainfra@silkplasterindia.com">directorkanyakainfra@silkplasterindia.com</a> · <a href="tel:+919866333134">+91 98663 33134</a></p>
+      <p class="terms-note">The website’s source files are published on GitHub under the same terms; see the <a href="https://github.com/Kanyakainfra/Kanyakainfra.github.io/blob/main/LICENSE" target="_blank" rel="noopener">LICENSE</a> file. GitHub’s Terms of Service let GitHub users view and fork public repositories within GitHub; no other right is granted.</p>
+    </div>
+  </section>
+</div>
+
+<!-- =====================================================================
      SHARED — CONTACT
      ===================================================================== -->
 <section class="contact" id="contact" aria-labelledby="contact-title">
@@ -1113,7 +1259,7 @@ footer{padding:45px 22px 30px}
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Kanyaka Infra Private Limited. All rights reserved. Renders are indicative; areas and figures are approximate.</span>
+    <span>© 2026 Kanyaka Infra Private Limited. All rights reserved. Renders are indicative; areas and figures are approximate. <a href="#terms">Terms of use</a></span>
     <a href="#top" data-top>Back to top ↑</a>
   </div>
 </footer>
@@ -1124,7 +1270,7 @@ footer{padding:45px 22px 30px}
 </div>
 
 <dialog class="lightbox" aria-label="Image viewer">
-  <div class="lightbox-bar"><p></p><button class="lightbox-close" type="button">Close</button></div>
+  <div class="lightbox-bar"><p></p><div class="lightbox-actions"><button class="lightbox-prev" type="button" aria-label="Previous image" hidden>‹ Prev</button><button class="lightbox-next" type="button" aria-label="Next image" hidden>Next ›</button><button class="lightbox-close" type="button">Close</button></div></div>
   <img alt="">
 </dialog>
 
@@ -1140,7 +1286,8 @@ footer{padding:45px 22px 30px}
   var titles={
     'construction':'Kanyaka Infra | Construction & Development, Tirupati · Hyderabad',
     'saptara':'The Saptara, Tirupati | Kanyaka Infra',
-    'silk-plaster':'Silk Plaster India | Kanyaka Infra'
+    'silk-plaster':'Silk Plaster India | Kanyaka Infra',
+    'terms':'Terms of use | Kanyaka Infra'
   };
   var REMOTE='images/saptara/';
   var remoteStarted=false;
@@ -1219,18 +1366,42 @@ footer{padding:45px 22px 30px}
   }
   function observeAll(){ observe(document); }
 
-  /* Lightbox */
+  /* Lightbox. data-full names a larger file than the thumbnail; items inside [data-gallery] can be stepped through. */
   var dlg=document.querySelector('.lightbox');
   var dlgImg=dlg.querySelector('img'), dlgCap=dlg.querySelector('p');
+  var dlgPrev=dlg.querySelector('.lightbox-prev'), dlgNext=dlg.querySelector('.lightbox-next');
+  var lbGroup=[], lbIdx=0;
+  function lbSource(b){
+    var im=b.querySelector('img'), full=b.getAttribute('data-full');
+    if(full) return [full, im?im.alt:(b.getAttribute('aria-label')||'')];
+    if(im) return [im.src, im.alt];
+    var m=/url\(["']?(.*?)["']?\)\s*$/.exec(getComputedStyle(b).backgroundImage||'');
+    return [m?m[1]:'', b.getAttribute('aria-label')||''];
+  }
+  function lbShow(i){
+    lbIdx=(i+lbGroup.length)%lbGroup.length;
+    var b=lbGroup[lbIdx], s=lbSource(b);
+    if(!s[0]) return '';
+    dlgImg.src=s[0]; dlgImg.alt=s[1];
+    dlgCap.textContent=(b.getAttribute('data-caption')||'')+(lbGroup.length>1?'  ('+(lbIdx+1)+' / '+lbGroup.length+')':'');
+    return s[0];
+  }
   document.addEventListener('click', function(e){
     var b=e.target.closest('[data-lightbox]');
     if(!b) return;
-    var im=b.querySelector('img'), src, alt;
-    if(im){ src=im.src; alt=im.alt; }
-    else { var m=/url\(["']?(.*?)["']?\)\s*$/.exec(getComputedStyle(b).backgroundImage||''); src=m?m[1]:''; alt=b.getAttribute('aria-label')||''; }
+    var g=b.closest('[data-gallery]');
+    lbGroup=g?[].slice.call(g.querySelectorAll('[data-lightbox]')):[b];
+    var src=lbShow(lbGroup.indexOf(b));
     if(!src) return;
-    dlgImg.src=src; dlgImg.alt=alt; dlgCap.textContent=b.getAttribute('data-caption')||'';
-    if(dlg.showModal){ dlg.showModal(); } else { window.open(src,'_blank'); }
+    dlgPrev.hidden=dlgNext.hidden=lbGroup.length<2;
+    if(dlg.showModal){ if(!dlg.open) dlg.showModal(); } else { window.open(src,'_blank'); }
+  });
+  dlgPrev.addEventListener('click', function(){ lbShow(lbIdx-1); });
+  dlgNext.addEventListener('click', function(){ lbShow(lbIdx+1); });
+  dlg.addEventListener('keydown', function(e){
+    if(lbGroup.length<2) return;
+    if(e.key==='ArrowLeft'){ e.preventDefault(); lbShow(lbIdx-1); }
+    else if(e.key==='ArrowRight'){ e.preventDefault(); lbShow(lbIdx+1); }
   });
   dlg.querySelector('.lightbox-close').addEventListener('click', function(){ dlg.close(); });
   dlg.addEventListener('click', function(e){ if(e.target===dlg) dlg.close(); });
