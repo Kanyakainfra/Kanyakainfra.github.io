@@ -620,7 +620,7 @@ footer{padding:45px 22px 30px}
     <div class="project-grid">
 
       <article class="project wide reveal" id="c-saptara-card">
-        <div class="project-media" data-remote-bg="views/facade-day.jpg" role="img" aria-label="The Saptara, Tirupati: building facade at sunrise, architectural visualisation">
+        <div class="project-media" data-remote-bg="facade-day.jpg" role="img" aria-label="The Saptara, Tirupati: building facade at sunrise, architectural visualisation">
           <div class="saptara-card-fallback" aria-hidden="true">
             <div class="mini-floors"><span><b>Rooftop</b></span><span><b>Floors 5–6</b></span><span><b>Floors 3–4</b></span><span><b>Floor 2 + M</b></span><span><b>Ground + 1</b></span><span><b>Basement</b></span></div>
             <div class="word">The<br>Saptara</div>
@@ -864,7 +864,7 @@ footer{padding:45px 22px 30px}
     <p class="section-kicker"><span class="kn"></span> / The experience</p>
     <div class="head-grid">
       <h2>From street energy <em>to sky-level calm.</em></h2>
-      <p>Concept renderings from The Saptara website. Layouts and finishes are indicative.</p>
+      <p>Concept renderings of The Saptara. Layouts and finishes are indicative.</p>
     </div>
     <div class="mosaic">
       <figure class="mosaic-wide"><div class="bg" data-remote-bg="central-atrium.jpg"></div><figcaption><b>Retail &amp; central atrium</b><span>A multi-level heart for discovery.</span></figcaption></figure>
@@ -873,7 +873,7 @@ footer{padding:45px 22px 30px}
       <figure><div class="bg" data-remote-bg="luxury-suite.jpg"></div><figcaption><b>Hospitality</b><span>Economy and 3-star hotel rooms.</span></figcaption></figure>
       <figure><div class="bg" data-remote-bg="rooftop-pool.jpg"></div><figcaption><b>Rooftop leisure</b><span>Pool, spa and cottages.</span></figcaption></figure>
     </div>
-    <p class="image-credit">Images: The Saptara website. Concept renderings, indicative only.</p>
+    <p class="image-credit">Concept renderings, indicative only.</p>
   </section>
 
   <section class="section sand on-paper" id="s-news">
@@ -1142,10 +1142,10 @@ footer{padding:45px 22px 30px}
     'saptara':'The Saptara, Tirupati | Kanyaka Infra',
     'silk-plaster':'Silk Plaster India | Kanyaka Infra'
   };
-  var REMOTE='https://the-saptara-tirupati.p-c-k.chatgpt.site/assets/';
+  var REMOTE='images/saptara/';
   var remoteStarted=false;
 
-  /* Saptara renders are read from The Saptara website; if they cannot load, the designed fallback stays. */
+  /* Saptara renders (from The Saptara presentation) are served from images/saptara/; if one cannot load, the designed fallback stays. */
   function loadRemote(){
     if(remoteStarted) return; remoteStarted=true;
     var loaded=0, galleryEls=[].slice.call(document.querySelectorAll('#s-gallery [data-remote-bg]'));
